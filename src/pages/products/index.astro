@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import Card from '../../components/Card.astro';
+import type { CollectionEntry } from "astro:content";
+
+const allProducts: CollectionEntry<"products">[] = (await getCollection("products"))
+.filter((product) => product.data.pubDate <= new Date())
+  .sort((a, b) => (a.data.pubDate < b.data.pubDate ? 1 : -1));
+---
+<Layout title="go">
+<div class="container">
+    <h1>products</h1>
+    <ul role="list" class="link-card-grid">
+  {allProducts.map((product) => (
+     
+        <Card href={`/products/${product.slug}`}
+					title={product.data.title}
+					body={product.data.author}
+          date={product.data.pubDate} />
+    
+    ))
+    </ul>
+</Layout>
+

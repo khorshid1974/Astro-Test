@@ -1,0 +1,20 @@
+---
+
+import { getCollection } from 'astro:content';
+
+import type { CollectionEntry } from "astro:content";
+
+const allProducts: CollectionEntry<"products">[] = (await getCollection("products"));
+const allTags= allProducts.flatMap((product) => product.data.tags);
+const uniqueTags = [...new Set(allTags)];
+---
+
+
+  <h1>Tags</h1>
+  <ul>
+    {uniqueTags.map((tag) => (
+      <li>
+        <a href={`/products/${tag}`}>{tag}</a>
+      </li>
+    ))}
+  </ul>
