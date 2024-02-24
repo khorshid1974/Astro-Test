@@ -7,5 +7,5 @@ export default defineConfig({
   integrations: [tailwind()],
   site: 'https://khorshid1974.github.io',
   // base: '/my-repo',
-  output: "server"
+  //output: "server"
 });
