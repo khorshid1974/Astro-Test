@@ -14,7 +14,7 @@ const allProducts: CollectionEntry<"products">[] = (await getCollection("product
     <ul role="list" class="link-card-grid">
   {allProducts.map((product) => (
      
-        <Card href={`/articles/${product.slug}`}
+        <Card href={`/products/${product.slug}`}
 					title={product.data.title}
 					body={product.data.author}
           date={product.data.pubDate} />
